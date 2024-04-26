@@ -1,0 +1,203 @@
+@import "styles";
+
+body {
+    background-color: #FFFFFF;
+}
+
+header {
+    background-color: white;
+    box-shadow: none;
+}
+
+.header-sides {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    padding-left: 10px;
+
+    i {
+        font-size: 26px;
+    }
+}
+
+.main-pic {
+    height: 275px;
+    position: relative;
+    z-index: -1;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.menu {
+    background-color: $color-bg;
+    border-radius: 50px 50px 0px 0px;
+    margin-top: -50px;
+    padding: 10px 15px;
+    font-family: $font-body;
+
+    label input {
+        display: none;
+        &:checked + .menu-options {
+            & > .menu-choice {
+                transform: translateX(-60px);
+            }
+            & > .menu-desc {
+                width: calc(100% - 150px);
+            }
+       }
+    }
+
+    &-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        @include heart-animation;
+        padding-left: 15px;
+        padding-right: 20px;
+    }
+
+    &-course {
+        animation: showCourse 1s 1 ease-out ;
+        animation-fill-mode: forwards;
+        opacity: 0; 
+    }
+
+    &-options {
+        background-color: #FFFFFF;
+        font-weight: 300;
+        font-size: 15px;
+        padding: 0px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: row;
+        box-shadow: 0px 4px 15px 0px #0000001A;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 15px;
+    }
+
+    &-desc {
+        padding: 10px 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100% - 30px);
+        transition: width 330ms ease-in-out;
+    }
+
+    &-choice {
+        display: flex;
+        flex-direction: row;
+        margin-right: -60px;
+        transition: transform 330ms ease-in-out;
+    }
+
+    &-price {
+        width: 30px;
+        font-weight: 700;
+        color: #353535;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    &-checked {
+        width: 60px;
+        height: 100%;
+        background-color: $color-3rd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        i {
+            font-size: 26px;
+            color: white;
+        }
+    }
+    
+}
+
+.order {
+    text-align: center;
+    animation: showCourse 1s 1 ease-out ;
+    animation-fill-mode: forwards;
+    opacity: 0; 
+    animation-delay: 2.5s;
+
+    input {
+        @include main-button;
+        padding: 15px 50px;
+    }
+}
+
+h1 {
+    font-family: $font-title;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 16px;
+    display: inline-block;
+    padding-bottom: 7px;
+    position: relative;
+}
+
+h2:before{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    bottom: 0;
+    left: 0%;
+    border-bottom: 3px solid $color-3rd;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 18px;
+}
+@keyframes showCourse {
+  to   { opacity: 1; }
+}
+
+#entrees {
+    animation-delay: 1s;
+}
+
+#plats {
+    animation-delay: 1.5s;
+}
+
+#desserts {
+    animation-delay: 2s;
+}
+
+@media (min-width: 1025px) {
+
+    .main-pic {
+        height: 400px;
+    }
+
+    .menu {
+        width: 40vw;
+        margin: -50px auto 0 auto;
+        padding: 40px 250px;
+
+        &-title {
+            justify-content: center;
+            i {
+                margin-left: 30px;
+            }
+        }
+    }
+
+}
